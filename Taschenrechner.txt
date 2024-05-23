@@ -1,0 +1,135 @@
+using System;
+
+namespace Taschenrechner
+{
+    class Taschenrechner
+    {
+        // Variable zur Speicherung des letzten Ergebnisses
+        private double letztesErgebnis;
+
+        // Konstruktor, der das letzte Ergebnis auf 0 setzt
+        public Taschenrechner()
+        {
+            letztesErgebnis = 0;
+        }
+
+        // Eigenschaft zum Abrufen des letzten Ergebnisses
+        public double LetztesErgebnis
+        {
+            get { return letztesErgebnis; }
+        }
+
+        // Methode zur Addition zweier Zahlen
+        public double Addieren(double a, double b)
+        {
+            letztesErgebnis = a + b;
+            return letztesErgebnis;
+        }
+
+        // Methode zur Subtraktion zweier Zahlen
+        public double Subtrahieren(double a, double b)
+        {
+            letztesErgebnis = a - b;
+            return letztesErgebnis;
+        }
+
+        // Methode zur Multiplikation zweier Zahlen
+        public double Multiplizieren(double a, double b)
+        {
+            letztesErgebnis = a * b;
+            return letztesErgebnis;
+        }
+
+        // Methode zur Division zweier Zahlen
+        public double Dividieren(double a, double b)
+        {
+            // Überprüfung, ob der Divisor nicht 0 ist
+            if (b != 0)
+            {
+                letztesErgebnis = a / b;
+                return letztesErgebnis;
+            }
+            else
+            {
+                // Ausgabe einer Fehlermeldung, wenn durch Null geteilt wird
+                Console.WriteLine("Division durch Null nicht möglich.");
+                return double.NaN; // Rückgabe von NaN (Not a Number)
+            }
+        }
+
+        // Methode zur Potenzierung einer Basis mit einem Exponenten
+        public double Potenzieren(double basis, double exponent)
+        {
+            letztesErgebnis = Math.Pow(basis, exponent);
+            return letztesErgebnis;
+        }
+
+        // Methode zur Berechnung der Quadratwurzel einer Zahl
+        public double WurzelZiehen(double zahl)
+        {
+            letztesErgebnis = Math.Sqrt(zahl);
+            return letztesErgebnis;
+        }
+
+        // Methode zur Berechnung des Logarithmus einer Zahl zur gegebenen Basis
+        public double Logarithmus(double zahl, double basis)
+        {
+            letztesErgebnis = Math.Log(zahl, basis);
+            return letztesErgebnis;
+        }
+
+        // Methode zur Berechnung der Fakultät einer Zahl
+        public double Fakultaet(double zahl)
+        {
+            if (zahl == 0)
+                return 1;
+            else
+            {
+                // Iterative Berechnung der Fakultät
+                double result = 1;
+                for (int i = 1; i <= zahl; i++)
+                {
+                    result *= i;
+                }
+                letztesErgebnis = result;
+                return letztesErgebnis;
+            }
+        }
+
+        // Methoden zur Berechnung des Sinus, Cosinus und Tangens eines Winkels
+        public double Sinus(double winkel)
+        {
+            letztesErgebnis = Math.Sin(winkel);
+            return letztesErgebnis;
+        }
+
+        public double Cosinus(double winkel)
+        {
+            letztesErgebnis = Math.Cos(winkel);
+            return letztesErgebnis;
+        }
+
+        public double Tangens(double winkel)
+        {
+            letztesErgebnis = Math.Tan(winkel);
+            return letztesErgebnis;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Erstellen einer Instanz des Taschenrechners
+            Taschenrechner rechner = new Taschenrechner();
+            
+            // Beispielanwendung
+            double ergebnis = rechner.Addieren(5, 3);
+            Console.WriteLine("Letztes addierte Ergebnis: " + rechner.LetztesErgebnis); // Ausgabe: 8
+            
+            ergebnis = rechner.Dividieren(10, 2);
+            Console.WriteLine("Letztes diviediertes Ergebnis: " + rechner.LetztesErgebnis); // Ausgabe: 5
+        }
+    }
+}
+
